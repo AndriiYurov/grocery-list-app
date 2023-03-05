@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const getItems = (setItems) => {
-    axios.get('http://localhost:4000')
+    axios.get('https://grocery-list-app-q7nc.onrender.com')
     .then(({data}) => {
         setItems(data)
     })
 }
 
 const addItems = (title, setTitle, setItems) => {
-    axios.post('http://localhost:4000/saveList', { title })
+    axios.post('https://grocery-list-app-q7nc.onrender.com/saveList', { title })
     .then(() => {
         setTitle('')
         getItems(setItems)
@@ -16,7 +16,7 @@ const addItems = (title, setTitle, setItems) => {
 }
 
 const deleteItems = (_id, setItems, setTitle, setEditing) => {
-    axios.post('http://localhost:4000/deleteList', {_id})
+    axios.post('https://grocery-list-app-q7nc.onrender.com/deleteList', {_id})
     .then(() => {
         getItems(setItems)
         setTitle('')
@@ -25,7 +25,7 @@ const deleteItems = (_id, setItems, setTitle, setEditing) => {
 }
 
 const editItems = (itemId, title, setTitle, setItems, setEditing) => {
-    axios.post('http://localhost:4000/updateList', { _id: itemId, title})
+    axios.post('https://grocery-list-app-q7nc.onrender.com/updateList', { _id: itemId, title})
     .then(() => {
         setTitle('')
         setEditing(false);
@@ -34,7 +34,7 @@ const editItems = (itemId, title, setTitle, setItems, setEditing) => {
 }
 
 const deleteAll = ( setItems, setTitle, setEditing ) => {
-    axios.post('http://localhost:4000/deleteMany', {})
+    axios.post('https://grocery-list-app-q7nc.onrender.com/deleteMany', {})
     .then(() => {
         getItems(setItems)
         setTitle('')
